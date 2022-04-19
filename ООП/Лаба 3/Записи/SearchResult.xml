@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<Orders xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ordersList />
+  <SearchResult>
+    <Order>
+      <Id xmlns="laba_2">06ef682f-7fd0-4bbf-a519-78c0f8e8e2fc</Id>
+      <Proizvoditel xmlns="laba_2">
+        <Id>07999b79-bf07-4785-a789-e156667f4dc3</Id>
+      </Proizvoditel>
+      <Name xmlns="laba_2">asdgagd</Name>
+      <InvetarniNumber xmlns="laba_2">12</InvetarniNumber>
+      <Size xmlns="laba_2">Большой</Size>
+      <Weight xmlns="laba_2"> 11,11</Weight>
+      <Type xmlns="laba_2">НепродовольственныеПродовольственные</Type>
+      <DataPostyplenia xmlns="laba_2">5 апреля 2022 г.</DataPostyplenia>
+      <Quantity xmlns="laba_2">200</Quantity>
+      <Price xmlns="laba_2"> 111</Price>
+    </Order>
+    <Order>
+      <Id xmlns="laba_2">b9e9127a-373d-44dd-a9b6-91eb385da23c</Id>
+      <Proizvoditel xmlns="laba_2">
+        <Id>cda0c252-f42b-45e3-ab06-f5cbb516b6ef</Id>
+      </Proizvoditel>
+      <Name xmlns="laba_2">asdgasgd</Name>
+      <InvetarniNumber xmlns="laba_2">124</InvetarniNumber>
+      <Size xmlns="laba_2">Большой</Size>
+      <Weight xmlns="laba_2">  1,11</Weight>
+      <Type xmlns="laba_2">Непродовольственные</Type>
+      <DataPostyplenia xmlns="laba_2">4 апреля 2022 г.</DataPostyplenia>
+      <Quantity xmlns="laba_2">400</Quantity>
+      <Price xmlns="laba_2"> 111</Price>
+    </Order>
+    <Order>
+      <Id xmlns="laba_2">4ebcc47d-a923-4fe3-8615-a8d0157d1c5b</Id>
+      <Proizvoditel xmlns="laba_2">
+        <Id>3f345386-182d-49e6-ba9d-aa579f65ac9b</Id>
+      </Proizvoditel>
+      <Name xmlns="laba_2">asdg</Name>
+      <InvetarniNumber xmlns="laba_2">124</InvetarniNumber>
+      <Size xmlns="laba_2">Большой</Size>
+      <Weight xmlns="laba_2"> 11,1</Weight>
+      <Type xmlns="laba_2">Непродовольственные</Type>
+      <DataPostyplenia xmlns="laba_2">6 апреля 2022 г.</DataPostyplenia>
+      <Quantity xmlns="laba_2">300</Quantity>
+      <Price xmlns="laba_2"> 11</Price>
+    </Order>
+  </SearchResult>
+</Orders>

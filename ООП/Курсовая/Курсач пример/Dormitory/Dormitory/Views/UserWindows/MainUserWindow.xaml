@@ -1,0 +1,64 @@
+﻿<Window x:Class="Dormitory.Views.UserWindows.MainUserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:UserFrames="clr-namespace:Dormitory.Frames.UserFrames"
+        xmlns:CommonFrames="clr-namespace:Dormitory.Frames.CommonFrames"
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        xmlns:hamburgerMenu="clr-namespace:HamburgerMenu;assembly=HamburgerMenu"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="Копийка" Height="600" Width="900" Icon="/Views/UserWindows/icon.png">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid x:Name="MainGrid">
+        <hamburgerMenu:HamburgerMenu Background="#673ab7" MenuIconColor="White" SelectionIndicatorColor="White" MenuItemForeground="White" HorizontalAlignment="Left" Panel.ZIndex="10">
+            <hamburgerMenu:HamburgerMenuItem Text="Список жильцов" PreviewMouseDown="OpenTenantsList"
+                                             Height="50"
+                                             Icon="/Views/UserWindows/human.png"/>
+            <hamburgerMenu:HamburgerMenuItem Text="Дежурство" PreviewMouseDown="OpenSignUpForDuty"
+                                             Height="50" Icon="/Views/UserWindows/duty.png"/>
+            <hamburgerMenu:HamburgerMenuItem Text="Информация" PreviewMouseDown="OpenDormitoryInfo"
+                                             Height="50" Icon="/Views/UserWindows/magnifier.png"/>
+            <hamburgerMenu:HamburgerMenuItem Text="Настройки"
+                                             Height="50"
+                                             PreviewMouseDown="OpenAccountEditing" Icon="/Views/UserWindows/setting.png"/>
+        </hamburgerMenu:HamburgerMenu>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="20 0">
+                <Button Content="Выход" Style="{StaticResource MaterialDesignFlatButton}" FontSize="10"
+                        Foreground="#673ab7" VerticalAlignment="Center"
+                        Click="SignOut"/>
+                <TextBlock x:Name="NicknameField" Style="{StaticResource MaterialDesignCaptionTextBlock}"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left"/>
+            </StackPanel>
+            <UserFrames:UserTenantsDataGridFrame x:Name="TenantsDataGrid" Grid.Column="1" Grid.Row="1"/>
+            <UserFrames:UserRegOnDutyFrame x:Name="RegOnDuty" Grid.Column="1" Grid.Row="1" Visibility="Collapsed"/>
+            <CommonFrames:DormitoryInfoFrame x:Name="DormitoryInfo" Grid.Column="1" Grid.Row="1" Visibility="Collapsed"/>
+            <CommonFrames:EditAccountFrame x:Name="AccountEdit" Grid.Column="1" Grid.Row="1" Visibility="Collapsed"/>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,7 @@
+Dear human,
+
+Unusual activity has been detected on the system at {0}.
+Please check out the attached screenshot.
+
+Regards,
+Mail Robot.
