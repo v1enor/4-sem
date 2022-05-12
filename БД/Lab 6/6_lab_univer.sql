@@ -1,0 +1,167 @@
+use UNIVER
+
+--1е
+SELECT	MAX([AUDITORIUM_CAPACITY]) [Макс вместимость],
+	    MIN([AUDITORIUM_CAPACITY]) [Мин вместимость],
+		AVG([AUDITORIUM_CAPACITY]) [Средняя вместимость],
+		SUM([AUDITORIUM_CAPACITY]) [Сум вместимость],
+		COUNT([AUDITORIUM]) [Количество]
+
+FROM [AUDITORIUM]
+
+--2е
+SELECT	AUDITORIUM_TYPE.AUDITORIUM_TYPENAME,
+		MAX([AUDITORIUM_CAPACITY]) [Макс вместимость],
+	    MIN([AUDITORIUM_CAPACITY]) [Мин вместимость],
+		AVG([AUDITORIUM_CAPACITY]) [Средняя вместимость],
+		SUM([AUDITORIUM_CAPACITY]) [Сум вместимость],
+		COUNT([AUDITORIUM]) [Количество]
+
+FROM AUDITORIUM inner join  AUDITORIUM_TYPE
+	on AUDITORIUM.AUDITORIUM_TYPE = AUDITORIUM_TYPE.AUDITORIUM_TYPE
+	Group by AUDITORIUM_TYPE.AUDITORIUM_TYPENAME
+
+--3е
+SELECT * 
+		FROM(SELECT 
+
+			CASE 
+				WHEN NOTE =  10 THEN  '10' 
+				WHEN NOTE between 8 and 9 THEN  '8-9'
+				WHEN NOTE between 6 and 7 THEN  '6-7'
+				WHEN NOTE between 4 and 5 THEN  '4-5'
+			end [Оценки], COUNT(*) [Количество]		
+
+			FROM  PROGRESS GROUP BY
+				CASE
+					WHEN NOTE =  10 THEN  '10' 
+					WHEN NOTE between 8 and 9 THEN  '8-9'
+					WHEN NOTE between 6 and 7 THEN  '6-7'
+					WHEN NOTE between 4 and 5 THEN  '4-5'
+				end ) as T
+					
+					ORDER BY CASE [Оценки]
+						when '10'  then 1
+						when '8-9' then 2
+						when '6-7' then 3
+						when '4-5' then 4
+						else 0
+					end;
+
+--- 4е
+SELECT f.FACULTY_NAME, g.PROFESSION, ROUND(AVG(CAST(p.NOTE AS FLOAT(4))),2) [Ср оценка]
+
+FROM FACULTY f inner join GROUPS g 
+		on f.FACULTY = g.FACULTY inner join STUDENT s
+		on s.IDGROUP = g.IDGROUP inner join PROGRESS p
+		on p.IDSTUDENT = s.IDSTUDENT 
+		GROUP BY  f.FACULTY_NAME, g.PROFESSION
+		ORDER BY [Ср оценка]
+
+SELECT f.FACULTY_NAME, g.PROFESSION, ROUND(AVG(CAST(p.NOTE AS FLOAT(4))),2) [Ср оценка]
+
+FROM FACULTY f inner join GROUPS g 
+		on f.FACULTY = g.FACULTY inner join STUDENT s
+		on s.IDGROUP = g.IDGROUP inner join PROGRESS p
+		on p.IDSTUDENT = s.IDSTUDENT  where p.SUBJECT in ('БД','ОАиП')
+		GROUP BY  f.FACULTY_NAME, g.PROFESSION
+		ORDER BY [Ср оценка]
+
+
+--5e 
+SELECT f.FACULTY_NAME, g.PROFESSION, p.SUBJECT, ROUND(AVG(CAST(p.NOTE AS FLOAT(4))),2) [Ср оценка]
+
+FROM FACULTY f inner join GROUPS g 
+		on f.FACULTY = g.FACULTY  inner join STUDENT s
+		on s.IDGROUP = g.IDGROUP inner join PROGRESS p
+		on p.IDSTUDENT = s.IDSTUDENT  where f.FACULTY  = 'ТОВ'
+		GROUP BY ROLLUP (f.FACULTY_NAME, g.PROFESSION, p.SUBJECT)
+
+
+--6е
+SELECT f.FACULTY_NAME, g.PROFESSION, p.SUBJECT, ROUND(AVG(CAST(p.NOTE AS FLOAT(4))),2) [Ср оценка]
+
+FROM FACULTY f inner join GROUPS g 
+		on f.FACULTY = g.FACULTY  inner join STUDENT s
+		on s.IDGROUP = g.IDGROUP inner join PROGRESS p
+		on p.IDSTUDENT = s.IDSTUDENT  where f.FACULTY  = 'ТОВ'
+		GROUP BY CUBE (f.FACULTY_NAME, g.PROFESSION, p.SUBJECT)
+
+--7е
+SELECT g.FACULTY, g.PROFESSION, p.SUBJECT, ROUND(AVG(CAST(p.NOTE AS FLOAT(4))),2) [Ср оценка] 
+	FROM GROUPS g inner join STUDENT s
+	on g.IDGROUP = s.IDGROUP inner join PROGRESS p 
+	on p.IDSTUDENT = s.IDSTUDENT WHERE g.FACULTY = 'ТОВ'
+	GROUP BY g.FACULTY, g.PROFESSION, p.SUBJECT
+	
+	UNION
+	
+SELECT g.FACULTY, g.PROFESSION, p.SUBJECT, ROUND(AVG(CAST(p.NOTE AS FLOAT(4))),2) [Ср оценка] 
+	FROM GROUPS g inner join STUDENT s
+	on g.IDGROUP = s.IDGROUP inner join PROGRESS p 
+	on p.IDSTUDENT = s.IDSTUDENT WHERE g.FACULTY = 'ХТиТ'
+	GROUP BY g.FACULTY, g.PROFESSION, p.SUBJECT
+
+SELECT g.FACULTY, g.PROFESSION, p.SUBJECT, ROUND(AVG(CAST(p.NOTE AS FLOAT(4))),2) [Ср оценка] 
+	FROM GROUPS g inner join STUDENT s
+	on g.IDGROUP = s.IDGROUP inner join PROGRESS p 
+	on p.IDSTUDENT = s.IDSTUDENT WHERE g.FACULTY = 'ТОВ'
+	GROUP BY g.FACULTY, g.PROFESSION, p.SUBJECT
+	
+	UNION ALL --Просто добавляет и не убирает дубликаты
+	
+SELECT g.FACULTY, g.PROFESSION, p.SUBJECT, ROUND(AVG(CAST(p.NOTE AS FLOAT(4))),2) [Ср оценка] 
+	FROM GROUPS g inner join STUDENT s
+	on g.IDGROUP = s.IDGROUP inner join PROGRESS p 
+	on p.IDSTUDENT = s.IDSTUDENT WHERE g.FACULTY = 'ХТиТ'
+	GROUP BY g.FACULTY, g.PROFESSION, p.SUBJECT
+
+
+--8е 
+SELECT g.FACULTY, g.PROFESSION, p.SUBJECT, ROUND(AVG(CAST(p.NOTE AS FLOAT(4))),2) [Ср оценка] 
+	FROM GROUPS g inner join STUDENT s
+	on g.IDGROUP = s.IDGROUP inner join PROGRESS p 
+	on p.IDSTUDENT = s.IDSTUDENT WHERE g.FACULTY = 'ТОВ'
+	GROUP BY g.FACULTY, g.PROFESSION, p.SUBJECT
+	
+	INTERSECT
+	
+SELECT g.FACULTY, g.PROFESSION, p.SUBJECT, ROUND(AVG(CAST(p.NOTE AS FLOAT(4))),2) [Ср оценка] 
+	FROM GROUPS g inner join STUDENT s
+	on g.IDGROUP = s.IDGROUP inner join PROGRESS p 
+	on p.IDSTUDENT = s.IDSTUDENT WHERE g.FACULTY = 'ХТиТ'
+	GROUP BY g.FACULTY, g.PROFESSION, p.SUBJECT
+
+
+--9е
+SELECT g.FACULTY, g.PROFESSION, p.SUBJECT, ROUND(AVG(CAST(p.NOTE AS FLOAT(4))),2) [Ср оценка] 
+	FROM GROUPS g inner join STUDENT s
+	on g.IDGROUP = s.IDGROUP inner join PROGRESS p 
+	on p.IDSTUDENT = s.IDSTUDENT WHERE g.FACULTY = 'ТОВ'
+	GROUP BY g.FACULTY, g.PROFESSION, p.SUBJECT
+	
+	EXCEPT
+	
+SELECT g.FACULTY, g.PROFESSION, p.SUBJECT, ROUND(AVG(CAST(p.NOTE AS FLOAT(4))),2) [Ср оценка] 
+	FROM GROUPS g inner join STUDENT s
+	on g.IDGROUP = s.IDGROUP inner join PROGRESS p 
+	on p.IDSTUDENT = s.IDSTUDENT WHERE g.FACULTY = 'ХТиТ'
+	GROUP BY g.FACULTY, g.PROFESSION, p.SUBJECT
+
+
+--10е
+SELECT p.SUBJECT,p.NOTE, (SELECT COUNT(*) FROM PROGRESS p2 WHERE p.SUBJECT = p2.SUBJECT and p2.NOTE in (8,9)) [Кол-во]
+	FROM PROGRESS p
+	GROUP BY p.SUBJECT, p.NOTE
+	HAVING p.NOTE in (8,9)
+
+
+--11е
+SELECT g.FACULTY ,s.IDGROUP, count(s.IDSTUDENT) [Кол-во в группе]
+	FROM STUDENT s inner join GROUPS g
+		on s.IDGROUP = g.IDGROUP
+	group by ROLLUP (g.FACULTY,s.IDGROUP)
+
+SELECT [AUDITORIUM_TYPE], COUNT([AUDITORIUM_TYPE]) [Кол-во по типу], sum(AUDITORIUM_CAPACITY)[Вместимость]
+	FROM AUDITORIUM
+	group by ROLLUP ([AUDITORIUM_TYPE],AUDITORIUM_CAPACITY)

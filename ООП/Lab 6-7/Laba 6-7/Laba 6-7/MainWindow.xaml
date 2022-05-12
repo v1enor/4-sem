@@ -4,9 +4,30 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Laba_6_7"
+        xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:xForms="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid Margin="137,10,41,30">
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}"/>
+
+    <Grid>
+        <StackPanel>
+
+        <Menu Height="25" VerticalAlignment="Top">
+                <MenuItem x:Name="edit" Header="Просмотр" Height="23"  Command="Open"></MenuItem>
+        </Menu>
+        <xForms:SfDataGrid x:Name="dataGrid"    
+                               AutoGenerateColumns="False"
+                               AllowFiltering="True"
+                               ColumnSizer="Star"
+                               AllowEditing="True"
+                               ItemsSource="{Binding ProductInfo}">
+
+        </StackPanel>
+        <Button Height="100" Width="100" Click="ButtonBase_OnClick"></Button>
+        <Button Content="Обновить" HorizontalAlignment="Left" Margin="635,360,0,0" VerticalAlignment="Top" Click="ButtonBase_OnClick2"/>
+        <Button  Content="edit" HorizontalAlignment="Left" Margin="544,360,0,0" VerticalAlignment="Top" Click="ButtonBase_OnClick2" Width="77"/>
     </Grid>
+
+
 </Window>
