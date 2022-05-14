@@ -42,7 +42,7 @@ namespace Laba_6_7
             edit.CommandBindings.Add(commandBinding);
 
 
-            
+
 
             Products_grid.ItemsSource = djson;
             this.DataContext = djson;

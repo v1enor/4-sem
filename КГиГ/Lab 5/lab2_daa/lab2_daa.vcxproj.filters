@@ -18,6 +18,9 @@
     <ClCompile Include="CMatrix.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="lab2_daa.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="LibGraph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -25,9 +28,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Lab05.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -49,11 +49,8 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Lab05.rc">
+    <ResourceCompile Include="lab2_daa.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>
