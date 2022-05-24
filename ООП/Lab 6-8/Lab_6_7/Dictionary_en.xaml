@@ -1,0 +1,49 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Lab_6_7"
+                    xmlns:v="clr-namespace:System;assembly=mscorlib">
+
+    <v:String x:Key="m_File"> File</v:String>
+    <v:String x:Key="m_DeleteFile">Delete file</v:String>
+    <v:String x:Key="m_About">About</v:String>
+    <v:String x:Key="m_Exit">Exit</v:String>
+    <v:String x:Key="m_Lang">Language</v:String>
+    <v:String x:Key="m_Lang_ru">Russian</v:String>
+    <v:String x:Key="m_Lang_en">English</v:String>
+    <v:String x:Key="m_Theme">Theme</v:String>
+    <v:String x:Key="m_Dark">Dark</v:String>
+    <v:String x:Key="m_Light">Light</v:String>
+    <v:String x:Key="m_UndoRedo">Undo/Redo</v:String>
+    <v:String x:Key="m_Undo">Undo</v:String>
+    <v:String x:Key="m_Redo">Redo</v:String>
+
+    <v:String x:Key="m_Cars">Cars</v:String>
+    <v:String x:Key="m_Search">Search</v:String>
+    <v:String x:Key="m_Edit">Edit</v:String>
+
+    <v:String x:Key="m_AddCar">Add car</v:String>
+    <v:String x:Key="m_Number">Number</v:String>
+    <v:String x:Key="m_Brand">Brand</v:String>
+    <v:String x:Key="m_Transmission">GearBox</v:String>
+    <v:String x:Key="m_Automatic">Automatic</v:String>
+    <v:String x:Key="m_Manual">Manual</v:String>
+    <v:String x:Key="m_Photo">Photo</v:String>
+    <v:String x:Key="m_Consumption">Rate</v:String>
+    <v:String x:Key="m_Mileage">Mileage</v:String>
+    <v:String x:Key="m_Price">Price ($)</v:String>
+    <v:String x:Key="m_Add">Add</v:String>
+    <v:String x:Key="m_Clear">Clear</v:String>
+    <v:String x:Key="m_Output">Output</v:String>
+
+    <v:String x:Key="m_SortSearch">Search and sort</v:String>
+    <v:String x:Key="m_Find">Find</v:String>
+    <v:String x:Key="m_From">From</v:String>
+    <v:String x:Key="m_To">To</v:String>
+    <v:String x:Key="m_Sort">Sort</v:String>
+
+    <v:String x:Key="m_Editing">Editing</v:String>
+    <v:String x:Key="m_OutputAll">Output all</v:String>
+    <v:String x:Key="m_Save">Save</v:String>
+    <v:String x:Key="m_Delete">Delete</v:String>
+
+</ResourceDictionary>

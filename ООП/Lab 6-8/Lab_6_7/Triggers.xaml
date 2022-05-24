@@ -1,0 +1,129 @@
+﻿ <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:local="clr-namespace:Lab_6_7">
+
+     
+     
+     
+     
+     
+    <!--MultiDataTrigger – множество триггеров данных -->
+    <Style x:Key="NumberTrigger" TargetType="{x:Type TextBox}">
+        <Style.Triggers>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding ElementName = chb_searchNumber, Path=IsChecked}" Value="True"/>
+                    <!---коллекция элементов -->
+                </MultiDataTrigger.Conditions>
+                <MultiDataTrigger.Setters>
+                    <Setter  Property="IsEnabled" Value="True"/>
+                </MultiDataTrigger.Setters>
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding ElementName = chb_searchNumber, Path=IsChecked}" Value="False"/>
+                </MultiDataTrigger.Conditions>
+                <MultiDataTrigger.Setters>
+                    <Setter  Property="IsEnabled" Value="False"/>
+                </MultiDataTrigger.Setters>
+            </MultiDataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="BrandTrigger" TargetType="{x:Type TextBox}">
+        <!-- отслеживает изменение свойств, которые необязательно должны представлять свойства зависимостей-->
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding ElementName = chb_searchBrand, Path=IsChecked}" Value="True">
+                <Setter  Property="IsEnabled" Value="True"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ElementName = chb_searchBrand, Path=IsChecked}" Value="False">
+                <Setter  Property="IsEnabled" Value="False"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="PriceTrigger" TargetType="{x:Type TextBox}">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding ElementName = chb_searchPrice, Path=IsChecked}" Value="True">
+                <Setter  Property="IsEnabled" Value="True"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ElementName = chb_searchPrice, Path=IsChecked}" Value="False">
+                <Setter  Property="IsEnabled" Value="False"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="ConsumptionTrigger" TargetType="{x:Type TextBox}">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding ElementName = chb_searchConsumption, Path=IsChecked}" Value="True">
+                <Setter  Property="IsEnabled" Value="True"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ElementName = chb_searchConsumption, Path=IsChecked}" Value="False">
+                <Setter  Property="IsEnabled" Value="False"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="TransmissionTrigger" TargetType="{x:Type ComboBox}">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding ElementName = chb_searchTransmission, Path=IsChecked}" Value="True">
+                <Setter  Property="IsEnabled" Value="True"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ElementName = chb_searchTransmission, Path=IsChecked}" Value="False">
+                <Setter  Property="IsEnabled" Value="False"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+
+    <!--EventTrigger-->
+
+    <Style TargetType="Button">
+        <Style.Setters>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="brdr" TextBlock.Foreground="{TemplateBinding Foreground}" 
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              Content="{TemplateBinding Content}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="CadetBlue" />
+            <Setter Property="Foreground" Value="White" />
+        </Style.Setters>
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Button.MouseEnter">
+                <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation To="White" Duration="0:0:0.3" Storyboard.TargetProperty="Background.Color"/>
+                            <ColorAnimation To="Black" Duration="0:0:0.3" Storyboard.TargetProperty="Foreground.Color"/>
+                            <DoubleAnimation To="13" Duration="0:0:0.3" Storyboard.TargetProperty="FontSize"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="Button.MouseLeave">
+                <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation To="CadetBlue" Duration="0:0:0.3" Storyboard.TargetProperty="Background.Color"/>
+                            <ColorAnimation To="White" Duration="0:0:0.3" Storyboard.TargetProperty="Foreground.Color"/>
+                            <DoubleAnimation To="12" Duration="0:0:0.3" Storyboard.TargetProperty="FontSize"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+
+
+</ResourceDictionary>
