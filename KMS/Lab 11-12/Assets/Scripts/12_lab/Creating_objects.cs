@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class Creating_objects : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //ќбъ€вление переменных дл€ определени€ границ плоскости по ос€м X-Z
     float minX, maxX, minZ, maxZ, objY, objX, objZ, angle = 2f;
 
     void Start()
+
     {
+        //ќбъ€вленение переменной типа MeshRenderer дл€ каркасной сетки плоскости
         MeshRenderer rend = gameObject.GetComponent<MeshRenderer>();
+        
+
+        //«адание значений дл€ границ плоскости с использованием конструкций 
+        //bounds - свойство границы объекта 
         minX = rend.bounds.min.x;
         maxX = rend.bounds.max.x;
         minZ = rend.bounds.min.z;
         maxZ = rend.bounds.max.z;
+        //ќбъ€вление переменных дл€ координат XYZ генерации объекта на сцене
         objY = gameObject.transform.position.y + 5;
     }
 
