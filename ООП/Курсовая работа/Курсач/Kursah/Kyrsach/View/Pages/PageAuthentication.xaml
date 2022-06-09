@@ -1,0 +1,24 @@
+﻿<Page x:Class="Kyrsach.View.Pages.PageAuthentication"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Kyrsach.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="950" d:DesignWidth="1000"
+      Title="CWALLET">
+    <Grid>
+        <!--<Image Stretch="UniformToFill" Source="{StaticResource signatureSrc}" />-->
+        <Button Click="Close_Window" HorizontalAlignment="Right" Content="X" Margin="15" VerticalAlignment="Top" Width="40" Height="40" FontSize="25"></Button>
+
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label  Margin="05" Content="Код" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="40" Width="200" FontSize="25"/>
+            <TextBox Margin="0,8" Name="CheckCode" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="35" Width="202" FontSize="20"/>
+            <Button Margin="0,6"   BorderThickness="1" Click="RepetCode" Name="Repet_Code"  Content="Отправить код ещё раз" HorizontalAlignment="Center" Width="202"  Height="35" FontSize="15"/>
+            <Button   Click="AcessBTN" Content="Подтвердить" HorizontalAlignment="Center"  VerticalAlignment="Top" Height="35" Width="202" FontSize="18">
+                
+            </Button>
+        </StackPanel>
+    </Grid>
+   
+</Page>

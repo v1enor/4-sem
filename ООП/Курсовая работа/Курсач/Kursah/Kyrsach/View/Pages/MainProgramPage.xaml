@@ -1,0 +1,70 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Kyrsach.View.Pages"
+      xmlns:oxy="http://oxyplot.org/wpf"
+      xmlns:vm="clr-namespace:Kyrsach.ViewModel"
+      xmlns:fa="http://schemas.fontawesome.io/icons/"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+      xmlns:Kyrsach="clr-namespace:Kyrsach" x:Class="Kyrsach.View.Pages.MainProgramPage"
+      mc:Ignorable="d" 
+      d:DesignHeight="950" d:DesignWidth="1000"
+      MinHeight="650"
+      MinWidth="800"
+      Title="CWALLET">
+
+    <Page.DataContext>
+        <vm:WalletViewModel />
+    </Page.DataContext>
+
+
+    <Grid>
+    
+
+        <ComboBox Name="TokenSelect" 
+                  ItemsSource="{Binding Token_list}" 
+                  SelectedValue="{Binding SelectedToken}"
+                  VerticalAlignment="Top"
+                  HorizontalAlignment="Center"
+                  Width="160" Margin="0,150,0,0" Height="54"
+                  FontSize="25"        
+                  VerticalContentAlignment ="Center"
+                  >
+            <ComboBox.ItemTemplate >
+                <DataTemplate>
+                    <TextBlock  Text="{Binding Abr_NAME}" ></TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        
+        <StackPanel  VerticalAlignment="Center" HorizontalAlignment="Center" DataContext="{Binding SelectedToken}">
+            <Label HorizontalAlignment="Center" FontSize="40" >Баланс:</Label>
+            <TextBlock  Name="Balance" HorizontalAlignment="Center"   Text="{Binding Balance}"  FontSize="75"/>
+            <Label HorizontalAlignment="Center" FontSize="25" >Цена в USD:</Label>
+            <TextBlock Name="nunu" Margin="0,0,0,10" Padding="0,0,0,24" HorizontalAlignment="Center" Text="{Binding USDPRICE, StringFormat=\{0\}$}" FontSize="25"></TextBlock>
+           
+
+            <StackPanel Orientation="Horizontal" UseLayoutRounding="True" SnapsToDevicePixels="True">
+                <Button  Click="SendCUR" Content="Отправить"   HorizontalAlignment="Left" Margin="11,0" VerticalAlignment="Top"  Width="150" Height="45" />
+                <Button Content="История" Click="OpenHistoryTransaction" HorizontalAlignment="Left" Margin="11,0" VerticalAlignment="Top"  Width="150" Height="45" />
+                <Button Click="Receive_Click" Content="Получить" HorizontalAlignment="Right" Margin="11,0"  VerticalAlignment="Top"  Width="150" Height="45"/>
+                <Button Click="ButtonBase_OnClick" Content="Обновить" HorizontalAlignment="Left" Margin="11,0" VerticalAlignment="Top"  Width="150" Height="45"/>
+    
+            </StackPanel>
+            <Button Click="CopyInBufer" Content="Скопировать баланс" HorizontalAlignment="Center" Margin="0,20"  Width="320"/>
+
+            <StackPanel Name="AdminPanel" Visibility="Collapsed" Orientation="Horizontal" Margin="0,30,0,0" HorizontalAlignment="Center"  UseLayoutRounding="True" SnapsToDevicePixels="True">
+                <Button  Width="160" Height="50" Click="Admin_tokens" Content="Валюты" FontSize="20" Background="#8b4513" Margin="0,0,10,0" />
+                <Button  Width="160" Height="50" Click="Admin_Search" Content="Транзакции" FontSize="20" Background="#8b4513" Margin="0,0,10,0"/>
+                <Button  Width="160" Height="50" Click="Admin_Users" Content="Регистрация" FontSize="20" Background="#8b4513" Margin="0,0,10,0" />
+            </StackPanel>
+
+
+        </StackPanel>
+
+        <Button Click="Close_Window" HorizontalAlignment="Right" Content="X" Margin="15" VerticalAlignment="Top" Width="40" Height="40" FontSize="25"></Button>
+
+    </Grid>
+</Page>
