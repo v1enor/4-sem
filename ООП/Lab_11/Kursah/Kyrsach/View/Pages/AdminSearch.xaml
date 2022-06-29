@@ -1,0 +1,95 @@
+﻿<Page x:Class="Kyrsach.View.Pages.AdminSearch"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Kyrsach.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="900"
+      Title="AdminSearch">
+
+    <Grid Name="MyGrid">
+        <Button Click="Close_Window" HorizontalAlignment="Right" Content="X" Margin="0,15,15,0" VerticalAlignment="Top" Width="30" Height="30" FontSize="25" />
+        <StackPanel Margin="10">
+            <TextBlock Text="Поиск по транзакциям" FontSize="30" FontWeight="Bold" Margin="0,20" />
+            <StackPanel Orientation="Horizontal">
+                
+            <Grid Width="400" HorizontalAlignment="Left" Height="100" >
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height ="*"></RowDefinition>
+                    <RowDefinition Height ="*"></RowDefinition>
+                    <RowDefinition Height ="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                
+                <TextBlock VerticalAlignment="Center" Text="Хэш " FontSize="20" />
+                    <TextBox Grid.Column="1"  Name="SearchHash" Text="" Height="26"  FontSize="20"  />
+
+                <TextBlock VerticalAlignment="Center" Grid.Row="1" Text="С адреса " FontSize="20"/>
+                    <TextBox  Grid.Column="1" Grid.Row="1" Name="SearchFrom" Text="" Height="26"  FontSize="20"  />
+
+                <TextBlock VerticalAlignment="Center" Grid.Row="2" Text="На адрес " FontSize="20"/>
+                    <TextBox  Grid.Column="1" Grid.Row="2" Name="SearchTo" Text="" Height="26" FontSize="20" />
+                
+            </Grid>
+
+            <Grid Width="350" HorizontalAlignment="Left" Height="100" Margin="0,10" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height ="*"></RowDefinition>
+                    <RowDefinition Height ="*"></RowDefinition>
+                    <RowDefinition Height ="*"></RowDefinition>
+                    <RowDefinition Height ="*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <CheckBox Name="ByAmount" Grid.Row="1" VerticalAlignment = "Center" HorizontalAlignment="Center" Click="CountVisible"  ></CheckBox>
+                <CheckBox Name="ByFee" Grid.Row="2" VerticalAlignment = "Center" HorizontalAlignment="Center" Click="FeeVisible"></CheckBox>
+
+                <TextBlock Text="Фильтр по:" VerticalAlignment="Center"  Grid.Column="1" FontSize="18"  ></TextBlock>
+                <TextBlock Text="Количество" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" FontSize="18" ></TextBlock>
+                <TextBlock Text="Комиссия" VerticalAlignment="Center"   Grid.Column="1" Grid.Row="2" FontSize="18"></TextBlock>
+
+                <TextBlock Text="От" VerticalAlignment="Center" Grid.Column="2"  FontSize="18"></TextBlock>
+                <TextBox Name="ByCountMin" Grid.Column="2" Grid.Row="1" IsEnabled="False" FontSize="18" PreviewTextInput="NumberValidationTextBox"/>
+                <TextBox Name="ByFeeMin" Grid.Column="2" Grid.Row="2"   IsEnabled="False" FontSize="18" PreviewTextInput="NumberValidationTextBox"/>
+
+                <TextBlock Text="До" VerticalAlignment="Center" Grid.Column="3" FontSize="18" ></TextBlock>
+                <TextBox Name="ByCountMax" Grid.Column="3" Grid.Row="1" IsEnabled="False" FontSize="18" PreviewTextInput="NumberValidationTextBox"/>
+                <TextBox Name="ByFeeMax"  Grid.Column="3" Grid.Row="2" IsEnabled="False" FontSize="18" PreviewTextInput="NumberValidationTextBox"/>
+
+                <Button Name="FindTR" Grid.Column="2" Grid.Row="3" Content="Найти" FontSize="16" Click="FindTransaction" ></Button>
+
+                </Grid>
+            </StackPanel>
+
+
+            <DataGrid x:Name="gvData" Height="600" Margin="0,0,10,0" AutoGenerateColumns="False" >
+
+                <DataGrid.Columns >
+                    <DataGridTextColumn Header="Хэш транзакции" Binding="{Binding Path=TxHash}" Width="150" />
+                    <DataGridTextColumn Header="ID токена" Binding="{Binding Path=IdCurrency}" Width="65" />
+                    <DataGridTextColumn Header="С адреса" Binding="{Binding Path=FromAdress}" Width="160" />
+                    <DataGridTextColumn Header="На адрес" Binding="{Binding Path=ToAdress}" Width="160" />
+                    <DataGridTextColumn Header="Количество" Binding="{Binding Path=Amount}" Width="90" />
+                    <DataGridTextColumn Header="Комиссия" Binding="{Binding Path=Fee}" Width="85" />
+                    <DataGridTextColumn Header="Дата" Binding="{Binding Path=Date}" Width="90" />
+                    <DataGridTextColumn Header="Цена в USD" Binding="{Binding Path=UsdPrice}" Width="85" />
+                </DataGrid.Columns>
+
+
+            </DataGrid>
+        </StackPanel>
+
+    </Grid>
+</Page>

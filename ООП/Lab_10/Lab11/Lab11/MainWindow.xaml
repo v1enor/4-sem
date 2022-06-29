@@ -1,0 +1,61 @@
+﻿<Window x:Class="Lab11.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab11"
+        mc:Ignorable="d"
+        Title="MainWindow" Width="900" Height="700" ResizeMode="NoResize" Closing="Window_Closing">
+    <Grid>
+        <DataGrid x:Name="datagrid" HorizontalAlignment="Left" Height="250" Margin="21,93,0,0" VerticalAlignment="Top" Width="464"/>
+        <Button x:Name="btnUP" Content="UP" HorizontalAlignment="Left" Margin="21,68,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="btnUP_Click"/>
+        <Button x:Name="btnDOWN" Content="DOWN" HorizontalAlignment="Left" Margin="96,68,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="btnDOWN_Click"/>
+        <Button x:Name="btn_sort_pages" Content="По страницам" HorizontalAlignment="Left" Margin="21,343,0,0" VerticalAlignment="Top" Width="102" Click="btn_sort_pages_Click"/>
+        <Button x:Name="btn_sort_year" Content="По годам" HorizontalAlignment="Left" Margin="123,343,0,0" VerticalAlignment="Top" Width="102" Click="btn_sort_year_Click"/>
+        <Button x:Name="btn_sort_title" Content="По названиям" HorizontalAlignment="Left" Margin="225,343,0,0" VerticalAlignment="Top" Width="102" Click="btn_sort_title_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="631,46,0,0" TextWrapping="Wrap" Text="Добавить книгу" VerticalAlignment="Top" FontSize="20"/>
+        <TextBox x:Name="title_select" HorizontalAlignment="Left" Height="40" Margin="665,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" FontSize="18"/>
+        <ComboBox x:Name="auth_select" HorizontalAlignment="Left" Margin="665,151,0,0" VerticalAlignment="Top" Width="203" Height="30"/>
+        <TextBlock HorizontalAlignment="Left" Margin="516,93,0,0" TextWrapping="Wrap" Text="Название" VerticalAlignment="Top" FontSize="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="516,151,0,0" TextWrapping="Wrap" Text="Автор" VerticalAlignment="Top" FontSize="16"/>
+        <ComboBox x:Name="file_select" HorizontalAlignment="Left" Margin="665,202,0,0" VerticalAlignment="Top" Width="203" Height="30" >
+
+        </ComboBox>
+        <TextBlock HorizontalAlignment="Left" Margin="516,202,0,0" TextWrapping="Wrap" Text="Файл" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox x:Name="pages_select" HorizontalAlignment="Left" Height="23" Margin="512,289,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="153"/>
+        <TextBox x:Name="year_select" HorizontalAlignment="Left" Height="23" Margin="711,289,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="153"/>
+        <TextBlock HorizontalAlignment="Left" Margin="512,250,0,0" TextWrapping="Wrap" Text="Страницы" VerticalAlignment="Top" FontSize="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="711,250,0,0" TextWrapping="Wrap" Text="Год" VerticalAlignment="Top" FontSize="16"/>
+        <Button x:Name="btn_AddBook" Content="Добавить" HorizontalAlignment="Left" Margin="512,333,0,0" VerticalAlignment="Top" Width="352" Height="30" Click="btn_AddBook_Click"/>
+
+        <TextBlock x:Name="errors" HorizontalAlignment="Left" Margin="0,631,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="327" Height="40"/>
+
+        <Button x:Name="btn_delBook" Content="Удалить" HorizontalAlignment="Left" Margin="433,343,0,0" VerticalAlignment="Top" Width="52" Click="btn_delBook_Click"/>
+        <Button x:Name="btn_showFiles" Content="Файлы" HorizontalAlignment="Left" Margin="433,68,0,0" VerticalAlignment="Top" Width="52" Height="25" Click="btn_showFiles_Click"/>
+        <Button x:Name="btn_showAuthors" Content="Авторы" HorizontalAlignment="Left" Margin="380,68,0,0" VerticalAlignment="Top" Width="53" Height="25" Click="btn_showAuthors_Click"/>
+        <Button x:Name="btn_showBooks" Content="Книги" HorizontalAlignment="Left" Margin="327,68,0,0" VerticalAlignment="Top" Width="53" Height="25" Click="btn_showBooks_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="108,460,0,0" TextWrapping="Wrap" Text="Добавить автора" VerticalAlignment="Top" FontSize="20"/>
+        <TextBox x:Name="fio_select" HorizontalAlignment="Left" Height="23" Margin="127,513,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="204"/>
+        <TextBlock HorizontalAlignment="Left" Margin="55,513,0,0" TextWrapping="Wrap" Text="Имя" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox x:Name="country_select" HorizontalAlignment="Left" Height="23" Margin="127,552,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="204"/>
+        <TextBlock HorizontalAlignment="Left" Margin="55,552,0,0" TextWrapping="Wrap" Text="Страна" VerticalAlignment="Top" FontSize="16"/>
+        <Button x:Name="btn_AddAu" Content="Добавить" HorizontalAlignment="Left" Margin="150,591,0,0" VerticalAlignment="Top" Width="75" Click="btn_AddAu_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="598,446,0,0" TextWrapping="Wrap" Text="Добавить файл" VerticalAlignment="Top" FontSize="20"/>
+        <TextBox x:Name="fileid_select" HorizontalAlignment="Left" Height="23" Margin="585,499,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="236"/>
+        <TextBlock HorizontalAlignment="Left" Margin="504,499,0,0" TextWrapping="Wrap" Text="Имя" VerticalAlignment="Top" FontSize="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="584,527,0,0" TextWrapping="Wrap" Text="Размер" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox x:Name="filesize_select" HorizontalAlignment="Left" Height="22" Margin="584,554,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="96"/>
+        <ComboBox x:Name="format_select" HorizontalAlignment="Left" Margin="692,554,0,0" VerticalAlignment="Top" Width="128" Height="22" >
+            <ComboBoxItem Content="doc"/>
+            <ComboBoxItem Content="docx"/>
+            <ComboBoxItem Content="txt"/>
+            <ComboBoxItem Content="html"/>
+            <ComboBoxItem Content="pdf"/>
+        </ComboBox>
+        <TextBlock HorizontalAlignment="Left" Margin="692,527,0,0" TextWrapping="Wrap" Text="Формат" VerticalAlignment="Top" FontSize="16"/>
+        <Button x:Name="btn_AddFi" Content="Добавить" HorizontalAlignment="Left" Margin="655,591,0,0" VerticalAlignment="Top" Width="75" Click="btn_AddFi_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="55,394,0,0" TextWrapping="Wrap" Text="Поиск" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox x:Name="search_field" HorizontalAlignment="Left" Height="23" Margin="123,392,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="204" TextChanged="search_field_TextChanged"/>
+
+    </Grid>
+</Window>

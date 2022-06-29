@@ -1,0 +1,43 @@
+﻿<Page x:Class="Kyrsach.RegisterPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Kyrsach"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="500"
+      Title="RegisterPage"
+      >
+
+    <Grid x:Name="MainRoot" Background="White" >
+        <Image Height="450" Stretch="UniformToFill" Source="{StaticResource signatureSrc}" />
+        <TextBox x:Name="RegLogin" HorizontalAlignment="Left" Height="23" Margin="170,65,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150"/>
+        <PasswordBox x:Name="RegPWDPasswordBox" Height="23" HorizontalAlignment="Left" Margin="170,121,0,0" VerticalAlignment="Top" Width="150"/>
+        <Label Content="Логин" HorizontalAlignment="Left" Margin="170,35,0,0" VerticalAlignment="Top" FontSize="15"/>
+        <Label Content="Пароль" HorizontalAlignment="Left" Margin="170,93,0,0" VerticalAlignment="Top" FontSize="15"/>
+        <PasswordBox x:Name="RegPWDPasswordBox2" Height="23" HorizontalAlignment="Left" Margin="170,182,0,0" VerticalAlignment="Top" Width="150"/>
+        <Label Content="Повтор пароль" HorizontalAlignment="Left" Margin="170,152,0,0" VerticalAlignment="Top" FontSize="15"/>
+        <TextBox Name="RegMail" Height="23" HorizontalAlignment="Left" Margin="170,240,0,0" VerticalAlignment="Top" Width="150"/>
+        <Label Content="Почта" HorizontalAlignment="Left" Margin="170,210,0,0" VerticalAlignment="Top" FontSize="15"/>
+        <Button Visibility="Visible"  Name="CheckMail" Click="Button_Click" Content="Подтвердить почту" HorizontalAlignment="Left" Margin="191,268,0,0" VerticalAlignment="Top" Width="113" Height="19" FontSize="10">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="1" Opacity="0.2" Direction="280" ShadowDepth="3" RenderingBias="Quality"/>
+            </Button.Effect>
+        </Button>
+        <TextBox  Visibility="Hidden" Name="CheckMailCode" HorizontalAlignment="Left" Height="23" Margin="325,240,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="92"/>
+        <TextBlock Visibility="Hidden" Name="CheckMailCode2"  HorizontalAlignment="Left" Margin="359,216,0,0" TextWrapping="Wrap" Text="Код" VerticalAlignment="Top" RenderTransformOrigin="0.859,0.382" FontSize="14"/>
+        <Button   Visibility="Hidden" Name="CheckMail2" Click="Button_Click2" Content="Зарегестрироваться" HorizontalAlignment="Left" Margin="170,339,0,0" VerticalAlignment="Top" Width="150" Height="50">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="1" Opacity="0.2" Direction="280" ShadowDepth="3" RenderingBias="Quality"/>
+            </Button.Effect>
+        </Button>
+
+        <DatePicker Name="RegDate" HorizontalAlignment="Left" Margin="170,292,0,0" VerticalAlignment="Top" Width="150" Height="42" />
+        <Button Visibility="Hidden"  Name="CheckMailCodey" Click="CheckMailCode3" Content="Проверить" HorizontalAlignment="Left" Margin="331,268,0,0" VerticalAlignment="Top" Width="80" Height="19" FontSize="10">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="1" Opacity="0.2" Direction="280" ShadowDepth="3" RenderingBias="Quality"/>
+            </Button.Effect>
+        </Button>
+
+    </Grid>
+</Page>

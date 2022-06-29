@@ -1,0 +1,28 @@
+﻿<Page x:Class="Kyrsach.View.Pages.SendCurrancy"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Kyrsach.View.Pages" xmlns:vm="clr-namespace:Kyrsach.ViewModel"
+      xmlns:kyrsach="clr-namespace:Kyrsach"
+      mc:Ignorable="d" 
+      d:DesignHeight="950" d:DesignWidth="1000"
+      Title="CWALLET">
+
+    <Page.DataContext>
+        <kyrsach:TransactionsList/>
+    </Page.DataContext>
+
+    <Grid>
+
+        <Button Click="Close_Window" HorizontalAlignment="Right" Content="X" Margin="15" VerticalAlignment="Top" Width="40" Height="40" FontSize="25"></Button>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <Label FontSize="25"   VerticalContentAlignment="Center">Куда</Label>
+            <TextBox Height="50" Width="450"  Margin="0,0,0,0" Name="ToAdress" FontSize="24" VerticalContentAlignment="Center" ></TextBox>
+            <CheckBox Name="LocalWallet" VerticalContentAlignment="Center" FontSize="20" Height="22" Content="Чтобы был в системе" Margin="0,5"/>
+            <Label FontSize="25" >Сколько</Label>
+            <TextBox Height="50" Width="450"  Name="Amount" FontSize="24" VerticalContentAlignment="Center" PreviewTextInput="NumberValidationTextBox">0,01</TextBox>
+            <Button Margin="0,50,0,0" Width="250" Height="50" FontSize="24" Click="ButtonBase_OnClick">Отправить</Button>
+        </StackPanel>
+    </Grid>
+</Page>
